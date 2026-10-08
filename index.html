@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جشن ۳ ماهگی | دنیای منی</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Vazirmatn -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(10, 15, 30, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(59, 130, 246, 0.05);
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+        }
+        .neon-glow-blue {
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 30px rgba(37, 99, 235, 0.5), 0 0 45px rgba(29, 78, 216, 0.3);
+        }
+        .neon-border-blue {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.35), inset 0 0 15px rgba(59, 130, 246, 0.15);
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(2deg); }
+        }
+        .animate-float {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        .animate-pulse-glow {
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e3a8a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="bg-[#020617] text-slate-100 min-h-screen relative selection:bg-blue-600 selection:text-white">
+
+    <canvas id="particles-canvas"></canvas>
+
+    <div id="lock-screen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/95 backdrop-blur-2xl transition-all duration-700">
+        <!-- Background Ambient Glow -->
+        <div class="absolute inset-0 z-[-1] overflow-hidden pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/15 rounded-full blur-[120px] animate-pulse-glow"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-[120px] animate-pulse-glow" style="animation-delay: 2s;"></div>
+            <img src="IMG_20261008_204700_918.jpg" alt="Background Blur" class="w-full h-full object-cover filter blur-xl scale-110 opacity-20" onerror="this.src='https://placehold.co/600x600/0f172a/3b82f6?text=💖'">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
+        </div>
+
+        <div class="glass-panel p-8 md:p-10 rounded-[2.5rem] max-w-md w-full text-center relative z-10 neon-border-blue transform transition-all duration-500 animate-float">
+            <!-- Glowing Photo Frame -->
+            <div class="relative w-56 h-72 mx-auto mb-6 group">
+                <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-400 blur-md opacity-70 group-hover:opacity-100 transition-opacity animate-pulse"></div>
+                <div class="relative w-full h-full rounded-3xl overflow-hidden border-2 border-blue-400/80 shadow-[0_0_30px_rgba(59,130,246,0.6)]">
+                    <img src="IMG_20261008_204700_918.jpg" alt="فرشته من" class="w-full h-full object-contain bg-slate-900 transform group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/300x300/0f172a/3b82f6?text=💖'">
+                </div>
+                <div class="absolute -bottom-2 -right-2 bg-blue-600 text-white w-9 h-9 rounded-full flex items-center justify-center shadow-lg border-2 border-slate-900 text-sm">
+                    <i class="fa-solid fa-heart text-pink-300"></i>
+                </div>
+            </div>
+            
+            <h2 class="text-2xl md:text-3xl font-black mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-400 to-indigo-300 neon-glow">ورود به قلب و دنیامون</h2>
+            <p class="text-slate-400 text-xs md:text-sm mb-6 leading-relaxed">برای ورود به کلبه ۳ ماهگی‌مون، رمز عبور رو وارد کن ✨</p>
+            
+            <form id="unlock-form" class="space-y-4">
+                <div class="relative">
+                    <input type="password" id="password-input" placeholder="رمز عبور..." class="w-full px-5 py-4 bg-slate-900/90 border border-blue-500/40 rounded-2xl text-center text-xl tracking-widest text-blue-200 placeholder-slate-600 focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-500/30 transition-all shadow-inner">
+                    <span class="absolute left-5 top-1/2 -translate-y-1/2 text-blue-400 text-lg"><i class="fa-solid fa-key"></i></span>
+                </div>
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black text-lg rounded-2xl shadow-[0_0_25px_rgba(59,130,246,0.6)] transition-all transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3">
+                    <span>باز کردن قفل عشق</span> <i class="fa-solid fa-heart-pulse text-pink-400 text-xl animate-bounce"></i>
+                </button>
+            </form>
+            <p id="error-msg" class="text-red-400 text-xs md:text-sm mt-3 hidden font-medium bg-red-950/40 py-2 rounded-xl border border-red-500/30 transition-all">رمز عبور اشتباهه فرشته من! 🥺</p>
+        </div>
+    </div>
+
+    <div id="main-content" class="hidden relative z-10 min-h-screen flex flex-col justify-between pb-16">
+        
+        <!-- Header -->
+        <header class="w-full py-6 px-4 relative z-20">
+            <div class="max-w-5xl mx-auto flex items-center justify-center glass-panel px-6 py-4 rounded-2xl neon-border-blue">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-blue-600/30 border border-blue-500/50 flex items-center justify-center text-blue-400">
+                        <i class="fa-solid fa-infinity text-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-blue-200">سومین ماهگردمون</h3>
+                        <p class="text-[10px] text-slate-400">تا ابد و یک روز کنار هم</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Banner Section -->
+        <main class="max-w-5xl mx-auto px-4 w-full space-y-10 my-4">
+            
+            <section class="text-center relative py-12 px-6 glass-panel rounded-[2.5rem] neon-border-blue overflow-hidden">
+                <div class="absolute -top-24 -right-24 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="inline-flex items-center gap-2 px-5 py-2 mb-6 rounded-full bg-blue-950/80 border border-blue-500/40 text-blue-300 text-xs md:text-sm font-semibold tracking-wider shadow-[0_0_15px_rgba(59,130,246,0.3)] animate-pulse">
+                    <i class="fa-solid fa-sparkles text-pink-400"></i> ۳ ماه عاشقانه و رویایی با تو <i class="fa-solid fa-sparkles text-pink-400"></i>
+                </div>
+
+                <h1 class="text-3xl md:text-6xl font-black mb-6 neon-glow text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-blue-400 to-indigo-300 leading-tight">
+                    تو فرشته منی، دلیل زندگی من
+                </h1>
+
+                <p class="text-slate-300 text-base md:text-lg max-w-3xl mx-auto leading-relaxed font-light">
+                    سه ماه گذشته، اما انگار ۳ قرنه که باهاتم... هروزش عاشق‌تر از دیروز، هروزش وابسته‌تر. با اومدنت به زندگیم تمام دنیام پر از نور و رنگ شد.
+                </p>
+
+                <div class="mt-8 flex flex-wrap justify-center gap-4">
+                    <div class="glass-card px-6 py-3 rounded-2xl border border-blue-500/30 text-xs md:text-sm text-blue-200 flex items-center gap-2">
+                        <i class="fa-solid fa-calendar-days text-blue-400"></i> تاریخ شروع عشقمون: <span class="font-bold text-white">۰۵ / ۴ / ۱۷</span>
+                    </div>
+                    <div class="glass-card px-6 py-3 rounded-2xl border border-pink-500/30 text-xs md:text-sm text-pink-200 flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-pink-500"></i> وضعیت: <span class="font-bold text-white">عاشق و دلداده تا ابد</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Messages Counter Card (Exact from screenshot: 76,934) -->
+                <div class="glass-panel rounded-[2rem] p-6 md:p-8 relative overflow-hidden group hover:border-blue-400/60 transition-all duration-500">
+                    <div class="absolute -right-8 -bottom-8 text-blue-600/10 text-9xl group-hover:scale-110 transition-transform pointer-events-none">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 text-2xl shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                            <i class="fa-solid fa-message"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg md:text-xl font-bold text-blue-200">حجم پیام‌های عاشقانه</h3>
+                            <p class="text-xs text-slate-400">تعداد کلمات و پیام‌هایی که تا امروز برای هم نوشتیم</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 bg-slate-900/80 border border-blue-500/30 rounded-2xl p-5 text-center relative">
+                        <div class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-400 to-indigo-300 neon-glow tracking-wider">
+                            ۷۶,۹۳۴ <span class="text-lg font-normal text-slate-300">پیام</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Time Elapsed Counter Card -->
+                <div class="glass-panel rounded-[2rem] p-6 md:p-8 relative overflow-hidden group hover:border-indigo-400/60 transition-all duration-500">
+                    <div class="absolute -right-8 -bottom-8 text-indigo-600/10 text-9xl group-hover:scale-110 transition-transform pointer-events-none">
+                        <i class="fa-solid fa-hourglass-half"></i>
+                    </div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-600/20 border border-indigo-500/40 flex items-center justify-center text-indigo-400 text-2xl shadow-[0_0_15px_rgba(99,102,241,0.3)]">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg md:text-xl font-bold text-indigo-200">شمارنده زنده با هم بودنمون</h3>
+                            <p class="text-xs text-slate-400">ثانیه‌هایی که با عشق در کنار هم گذشت</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-2 text-center mt-4">
+                        <div class="glass-card p-3 rounded-xl border border-blue-500/30">
+                            <span id="counter-days" class="block text-2xl md:text-3xl font-black text-blue-300">00</span>
+                            <span class="text-[10px] text-slate-400">روز</span>
+                        </div>
+                        <div class="glass-card p-3 rounded-xl border border-blue-500/30">
+                            <span id="counter-hours" class="block text-2xl md:text-3xl font-black text-blue-300">00</span>
+                            <span class="text-[10px] text-slate-400">ساعت</span>
+                        </div>
+                        <div class="glass-card p-3 rounded-xl border border-blue-500/30">
+                            <span id="counter-mins" class="block text-2xl md:text-3xl font-black text-blue-300">00</span>
+                            <span class="text-[10px] text-slate-400">دقیقه</span>
+                        </div>
+                        <div class="glass-card p-3 rounded-xl border border-blue-500/30">
+                            <span id="counter-secs" class="block text-2xl md:text-3xl font-black text-indigo-300 animate-pulse">00</span>
+                            <span class="text-[10px] text-slate-400">ثانیه</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <section class="glass-panel rounded-[2.5rem] p-8 md:p-12 relative neon-border-blue overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-center max-w-xl mx-auto mb-8">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white text-2xl mb-4 shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <h2 class="text-2xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-blue-400 to-indigo-300 neon-glow">نامه خصوصی و عاشقانه</h2>
+                    <p class="text-slate-400 text-sm mt-2">کلماتی از اعماق قلبم برای فرشته زندگیم</p>
+                </div>
+
+                <!-- Sealed Letter Box -->
+                <div class="bg-slate-900/90 border border-blue-500/40 rounded-3xl p-6 md:p-10 relative shadow-2xl">
+                    <div class="absolute top-4 left-4 text-blue-500/20 text-6xl font-serif select-none pointer-events-none">“</div>
+                    <p class="text-slate-100 text-lg md:text-xl leading-relaxed text-justify font-light whitespace-pre-line relative z-10 selection:bg-blue-600">
+                        من واقعا نمیدونم از کجا شروع کنم از کدوم خوبیت بگم ولی تنها چیزی میتونم بگم تو فرشته منی شد سه ماهه که اومدی تو زندگیم و خیلی چیزا تغییر کرده با وجود تو همچی قشنگ شده دلیل زندگیم شدی دلیل موفقیتم میتونم با یه کلمه بگم که واقعا دلیل زنده بودنمی بدون تو هیچی معنی نداره سه ماه گذشته انگار 3قرن باهاتم هروزش عاشق تر از دیروز هروز وابسته تر ارزو میکنم همیشه پیش هم باشیم تا ابدد خیلی دوستت دارممم عاشقتممم بوس بهتتت قلبممم 💞💞
+                    </p>
+                    <div class="absolute bottom-4 right-4 text-blue-500/20 text-6xl font-serif select-none pointer-events-none">”</div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <span class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-950/80 border border-blue-500/40 text-blue-300 font-bold text-sm shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+                        تا آخرین نفس عاشقتم <i class="fa-solid fa-heart text-pink-500 animate-bounce"></i>
+                    </span>
+                </div>
+            </section>
+
+            <section class="glass-panel rounded-[2.5rem] p-8 md:p-10 neon-border-blue text-center">
+                <div class="mb-8">
+                    <div class="w-12 h-12 mx-auto rounded-2xl bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 text-xl mb-3 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                        <i class="fa-solid fa-images"></i>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-indigo-300">فرشته زیبای من</h2>
+                </div>
+
+                <div class="max-w-md mx-auto relative group rounded-3xl overflow-hidden border-2 border-blue-500/50 shadow-[0_0_30px_rgba(59,130,246,0.4)]">
+                    <img src="IMG_20261008_204700_918.jpg" alt="فرشته من" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/400x500/0f172a/3b82f6?text=💖'">
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script>
+        // Password unlock logic with confetti
+        document.getElementById('unlock-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const inputVal = document.getElementById('password-input').value.trim();
+            const errorMsg = document.getElementById('error-msg');
+            const lockScreen = document.getElementById('lock-screen');
+            const mainContent = document.getElementById('main-content');
+
+            // Accept format 05/4/17, 05/04/17, 05417, etc.
+            const validPasswords = ['05/4/17', '05/04/17', '05417', '5/4/17', '05-4-17', '05-04-17'];
+
+            if (validPasswords.includes(inputVal)) {
+                errorMsg.classList.add('hidden');
+                
+                // Trigger gorgeous confetti burst
+                confetti({
+                    particleCount: 150,
+                    spread: 80,
+                    origin: { y: 0.6 },
+                    colors: ['#3b82f6', '#60a5fa', '#1d4ed8', '#ec4899', '#ffffff']
+                });
+
+                lockScreen.classList.add('opacity-0', 'pointer-events-none');
+                mainContent.classList.remove('hidden');
+
+                setTimeout(() => {
+                    lockScreen.style.display = 'none';
+                }, 700);
+            } else {
+                errorMsg.classList.remove('hidden');
+                const card = lockScreen.querySelector('.glass-panel');
+                card.classList.add('animate-shake');
+                setTimeout(() => {
+                    card.classList.remove('animate-shake');
+                }, 500);
+            }
+        });
+
+        // Live Time Elapsed Counter (Starting from 05/04/17)
+        const startDate = new Date('2026-04-17T00:00:00').getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const diff = Math.max(0, now - startDate);
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('counter-days').innerText = String(days).padStart(2, '0');
+            document.getElementById('counter-hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('counter-mins').innerText = String(mins).padStart(2, '0');
+            document.getElementById('counter-secs').innerText = String(secs).padStart(2, '0');
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Background Particle Canvas Animation (Blue stars and glowing hearts)
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        const particleCount = 55;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                size: Math.random() * 3 + 1,
+                speedY: (Math.random() * 0.7 + 0.2) * -1,
+                speedX: (Math.random() - 0.5) * 0.4,
+                opacity: Math.random() * 0.7 + 0.3,
+                isHeart: Math.random() > 0.82
+            });
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
+
+            particles.forEach(p => {
+                ctx.save();
+                ctx.globalAlpha = p.opacity;
+                
+                if (p.isHeart) {
+                    ctx.fillStyle = '#3b82f6';
+                    ctx.font = `${p.size * 6}px sans-serif`;
+                    ctx.fillText('💙', p.x, p.y);
+                } else {
+                    ctx.fillStyle = '#60a5fa';
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.shadowBlur = 12;
+                    ctx.shadowColor = '#3b82f6';
+                    ctx.fill();
+                }
+
+                ctx.restore();
+
+                p.y += p.speedY;
+                p.x += p.speedX;
+
+                if (p.y < -10) {
+                    p.y = height + 10;
+                    p.x = Math.random() * width;
+                }
+                if (p.x < 0 || p.x > width) {
+                    p.x = Math.random() * width;
+                }
+            });
+
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+    </script>
+</body>
+</html>
